@@ -1,3 +1,10 @@
+## Window name of Software update is different in some languages.
+if user locale of (get system info) is "en_NL" then
+	set WindowName to "Software Update"
+else if user locale of (get system info) is "nl_NL" then
+	set WindowName to "Software-update"
+end if
+
 tell application "System Preferences"
 	activate
 end tell
@@ -24,8 +31,8 @@ tell application "System Events"
 	tell process "System Preferences"
 		repeat 60 times
 			
-			if exists (button 1 of group 1 of window "Software Update") then
-				click button 1 of group 1 of window "Software Update"
+			if exists (button 1 of group 1 of window WindowName) then
+				click button 1 of group 1 of window WindowName
 				exit repeat
 			end if
 			
